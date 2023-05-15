@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block titulo %}Agregar nueva mascota{% endblock %}
+{% block contenido %}
+<div class="card">
+    <div class="card-header">
+        Crear nueva mascota
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la mascota</h4>
+        {% include 'mascotas/form.html'%}
+    </div>
+</div>
+{% endblock %}
