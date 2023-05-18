@@ -1,0 +1,161 @@
+Pasos
+
+1 Instalar:
+Git
+Xammp
+SqlYog
+Python
+Visual Studio Code
+Instalar la extesnion Python para Visual Studio Code
+
+2 Crear un carpeta con el nombre Django en el escritorio
+o en cualquier parte.
+ 
+3 Abrir carpeta Django con VSCODE.
+4 Instalar Django en local(terminal):
+
+pip install Django==3.2.8
+
+5 Crear proyecto Django:
+
+django-admin startproject sistema			 
+
+6 Cerrar carpeta Django.
+
+7 Abrir carpeta del proyecto, es decir la carpeta sistema.
+
+8 Correr el servidor(terminal):
+
+py manage.py runserver
+
+9 Detener el servidor(terminal):
+
+Control+c
+
+10 Crear un entorno virtual (terminal):
+
+python -m venv env
+
+11 Activar entorno virtual(terminal):
+
+env\scripts\activate
+
+12 Instalar complementos en el entorno virtual(terminal):
+
+pip install Django==3.2.8
+pip install Pillow==9.3.0
+pip install PyMySQL==1.0.2
+pip install sqlparse==0.4.3
+
+13 Activar el servidor MySQL(xampp).
+
+14 Crear una base de datos para el proyecto(sqlyog).
+
+15 Conectar la base de datos con Django:
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'libreta',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306'
+    }
+
+16 Importart modulo MySQL en sistema>_init_.py
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
+17 Correr el servidor(terminal) para verificar
+que no haya ningun error de la conxion.
+Si el servidor corre sin ningun problema
+sisgnifica que la conexion ha sido exitosa, de
+lo contraio aparece un mesaje de error en
+la terminal.
+
+17 Hacer migraciones de los modelos(tablas)
+que vienen por defecto en nuestro proyecto(terminal).
+Si todo esta bien deberian crearse unas tablas
+en nuestra base de
+
+py manage.py migrate
+
+18 Crear superusuario(terminal):
+
+py manage.py createsuperuser
+
+username:admin
+email:yobanichicunque@gmail.com
+password:12345yo
+
+19 Ir a la base de datos en sqlyog, abrir la tabla auth_user,
+y en los siguientes campos poner el nombre y apellido del usuario:
+
+name:yobani
+lastname:chicunque
+
+20 Ir al Panel de administracion y loguearse con
+username y password:
+
+username:admin
+password:12345yo
+
+21 Hacer modelos y relaciones 
+en libreta>models.py
+
+22 Hacer las migraciones de los modelos(terminal):
+
+py manage.py makemigrations
+py manage.py migrate
+
+Nota: Para hacer modificaciones de los modelos(tablas), por ejemplo, 
+cambiar el nombre de los camposse edita el el modelo creado y se 
+ejecutarn los dos comandos anteriores.
+
+py manage.py makemigrations
+py manage.py migrate
+
+23 Registrar los modelos en sistema>libreta>admin.py
+
+from django.contrib import admin
+from .models import usuarios_libreta
+
+admin.site.register(usuarios_libreta)
+
+Nota: con esto puedo hacer pruebas desde el user(admin) para saber si se estan guardando mis registros
+en mi tablas de la base de datos, sin antes haber creado un formulario de registro
+en html.
+
+24 Crear una aplicacion(terminal):
+
+python manage.py startapp libreta
+
+25 A�adir la aplicacion en la configuracion del proyecto
+en sistema>settings.py
+
+26 Crear una carpeta llamda templates en libreta>
+
+27 Crear index.html en libreta>templates
+
+28 crear una vista en libreta>views.py
+
+29 Crear una ruta en libreta>urls.py
+
+25 Imprimir todos los registros una modelo(tabla)
+en nuestra template index.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+

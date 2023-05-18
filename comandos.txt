@@ -1,0 +1,22 @@
+Comandos Django Terminal
+
+
+django-admin startproject sistema
+py manage.py runserver
+
+python -m venv env
+env\scripts\activate
+deactivate
+
+pip install Django==3.2.8
+pip install Pillow==9.3.0
+pip install PyMySQL==1.0.2
+pip install sqlparse==0.4.3
+
+py manage.py makemigrations
+py manage.py migrate
+
+py manage.py createsuperuser
+
+python manage.py startapp libreta
+
