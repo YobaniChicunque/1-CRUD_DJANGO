@@ -4,8 +4,12 @@ Comandos Django Terminal
 django-admin startproject sistema
 py manage.py runserver
 
-python -m venv env
+pip freeze
+pip freeze > requirements.txt
+
+py -m venv env
 env\scripts\activate
+pip install -r requirements.txt
 deactivate
 
 pip install Django==3.2.8
@@ -18,5 +22,5 @@ py manage.py migrate
 
 py manage.py createsuperuser
 
-python manage.py startapp libreta
+py manage.py startapp libreta
 

@@ -1,9 +1,9 @@
 from django import forms
-from .models import mascota
+from .models import Mascota
 
 
 class MascotaForm(forms.ModelForm):
     class Meta:
-        model = mascota
-        # fields= ['nombre', 'edad', 'foto', 'vacuna']
-        fields = '__all__'
+        model = Mascota
+        fields = ['nombre', 'edad', 'foto', 'vacuna']
+        # fields = '__all__'

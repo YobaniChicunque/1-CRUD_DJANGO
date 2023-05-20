@@ -34,7 +34,7 @@ Control+c
 
 10 Crear un entorno virtual (terminal):
 
-python -m venv env
+py -m venv env
 
 11 Activar entorno virtual(terminal):
 
@@ -45,7 +45,9 @@ env\scripts\activate
 pip install Django==3.2.8
 pip install Pillow==9.3.0
 pip install PyMySQL==1.0.2
-pip install sqlparse==0.4.3
+
+nota: recuerda que para instala las dependecias
+debes estar conectado a internet.
 
 13 Activar el servidor MySQL(xampp).
 
@@ -56,12 +58,13 @@ pip install sqlparse==0.4.3
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'libreta',
+        'NAME': 'veterinaria',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306'
     }
+}
 
 16 Importart modulo MySQL en sistema>_init_.py
 
@@ -78,7 +81,7 @@ la terminal.
 17 Hacer migraciones de los modelos(tablas)
 que vienen por defecto en nuestro proyecto(terminal).
 Si todo esta bien deberian crearse unas tablas
-en nuestra base de
+en nuestra base de datos(revisar en sqlyog).
 
 py manage.py migrate
 
@@ -88,22 +91,29 @@ py manage.py createsuperuser
 
 username:admin
 email:yobanichicunque@gmail.com
-password:12345yo
+password:123
 
 19 Ir a la base de datos en sqlyog, abrir la tabla auth_user,
 y en los siguientes campos poner el nombre y apellido del usuario:
 
-name:yobani
-lastname:chicunque
+name:Yobani
+lastname:Chicunque
 
 20 Ir al Panel de administracion y loguearse con
 username y password:
 
 username:admin
-password:12345yo
+password:123
+
+24 Crear una aplicacion(terminal):
+
+py manage.py startapp mascotas
+
+25 A�adir la aplicacion en la configuracion del proyecto
+en sistema>settings.py
 
 21 Hacer modelos y relaciones 
-en libreta>models.py
+en mascotas>models.py
 
 22 Hacer las migraciones de los modelos(terminal):
 
@@ -117,34 +127,30 @@ ejecutarn los dos comandos anteriores.
 py manage.py makemigrations
 py manage.py migrate
 
-23 Registrar los modelos en sistema>libreta>admin.py
+23 Registrar los modelos en sistema>mascotas>admin.py
 
 from django.contrib import admin
-from .models import usuarios_libreta
+from .models import Mascota
 
-admin.site.register(usuarios_libreta)
+admin.site.register(Mascota)
 
 Nota: con esto puedo hacer pruebas desde el user(admin) para saber si se estan guardando mis registros
 en mi tablas de la base de datos, sin antes haber creado un formulario de registro
 en html.
 
-24 Crear una aplicacion(terminal):
+26 Crear una carpeta llamda templates en mascotas>
 
-python manage.py startapp libreta
+27 Crear index.html en mascotas>templates
 
-25 A�adir la aplicacion en la configuracion del proyecto
-en sistema>settings.py
+28 crear una vista en mascotas>views.py
 
-26 Crear una carpeta llamda templates en libreta>
+29 Crear una ruta en mascotas>urls.py
 
-27 Crear index.html en libreta>templates
+25 Imprimir todos los regiatros de uno o varios modelos
+en una tabla html
 
-28 crear una vista en libreta>views.py
 
-29 Crear una ruta en libreta>urls.py
 
-25 Imprimir todos los registros una modelo(tabla)
-en nuestra template index.html
 
 
 

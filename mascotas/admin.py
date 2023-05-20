@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import mascota, vacunas
+from .models import Mascota
 # Register your models here.
 
-admin.site.register(mascota)
-admin.site.register(vacunas)
+admin.site.register(Mascota)

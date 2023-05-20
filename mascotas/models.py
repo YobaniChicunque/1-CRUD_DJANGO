@@ -3,17 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class vacunas(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(
-        max_length=100, verbose_name='Nombres', null=True)
-
-    def __str__(self):
-        fila = "Nombre: " + self.nombre
-        return fila
-
-
-class mascota(models.Model):
+class Mascota(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(
         max_length=100, verbose_name='Nombres', null=True)
@@ -21,7 +11,6 @@ class mascota(models.Model):
     foto = models.ImageField(upload_to='imagenes/',
                              verbose_name='Foto', null=True)
     vacuna = models.CharField(max_length=100, verbose_name='vacuna', null=True)
-    relacion = models.ManyToManyField(vacunas)
 
     def __str__(self):
         fila = "Nombre: " + self.nombre
