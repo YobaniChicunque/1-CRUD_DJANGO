@@ -58,7 +58,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `auth_permission` */
 
@@ -87,10 +87,18 @@ insert  into `auth_permission`(`id`,`name`,`content_type_id`,`codename`) values
 (22,'Can change session',6,'change_session'),
 (23,'Can delete session',6,'delete_session'),
 (24,'Can view session',6,'view_session'),
-(25,'Can add mascota',7,'add_mascota'),
-(26,'Can change mascota',7,'change_mascota'),
-(27,'Can delete mascota',7,'delete_mascota'),
-(28,'Can view mascota',7,'view_mascota');
+(25,'Can add persona',7,'add_persona'),
+(26,'Can change persona',7,'change_persona'),
+(27,'Can delete persona',7,'delete_persona'),
+(28,'Can view persona',7,'view_persona'),
+(29,'Can add vacuna',8,'add_vacuna'),
+(30,'Can change vacuna',8,'change_vacuna'),
+(31,'Can delete vacuna',8,'delete_vacuna'),
+(32,'Can view vacuna',8,'view_vacuna'),
+(33,'Can add mascota',9,'add_mascota'),
+(34,'Can change mascota',9,'change_mascota'),
+(35,'Can delete mascota',9,'delete_mascota'),
+(36,'Can view mascota',9,'view_mascota');
 
 /*Table structure for table `auth_user` */
 
@@ -115,7 +123,7 @@ CREATE TABLE `auth_user` (
 /*Data for the table `auth_user` */
 
 insert  into `auth_user`(`id`,`password`,`last_login`,`is_superuser`,`username`,`first_name`,`last_name`,`email`,`is_staff`,`is_active`,`date_joined`) values 
-(1,'pbkdf2_sha256$260000$bgliQenq3kDoYIKkJibfZr$3Hfpzo4z25rGE8FB/ho/Ey2kx47cEGv+tGrXKECVRTY=','2023-05-20 08:27:23.023295',1,'admin','Yobani','Chicunque','yobanichicunque@gmail.com',1,1,'2023-05-20 08:26:25.339789');
+(1,'pbkdf2_sha256$260000$ExaBBuAqaDUM5YTxjAhOVe$dKRW8vBdYiMYg7LL0Na72TVjOstWGCDuOXcQPrAXixQ=','2023-05-20 19:21:30.328331',1,'admin','','','yobanichicunque@gmail.com',1,1,'2023-05-20 18:00:57.260338');
 
 /*Table structure for table `auth_user_groups` */
 
@@ -169,9 +177,19 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `django_admin_log` */
+
+insert  into `django_admin_log`(`id`,`action_time`,`object_id`,`object_repr`,`action_flag`,`change_message`,`content_type_id`,`user_id`) values 
+(1,'2023-05-20 18:11:10.868980','1','Vacuna object (1)',1,'[{\"added\": {}}]',8,1),
+(2,'2023-05-20 18:11:18.305728','2','Vacuna object (2)',1,'[{\"added\": {}}]',8,1),
+(3,'2023-05-20 18:11:28.893841','3','Vacuna object (3)',1,'[{\"added\": {}}]',8,1),
+(4,'2023-05-20 18:11:32.632536','4','Vacuna object (4)',1,'[{\"added\": {}}]',8,1),
+(5,'2023-05-20 18:12:02.885691','1','Persona object (1)',1,'[{\"added\": {}}]',7,1),
+(6,'2023-05-20 18:12:36.985253','2','Persona object (2)',1,'[{\"added\": {}}]',7,1),
+(7,'2023-05-20 18:13:00.438967','3','Persona object (3)',1,'[{\"added\": {}}]',7,1),
+(8,'2023-05-20 18:56:14.557108','3','Sultan',1,'[{\"added\": {}}]',9,1);
 
 /*Table structure for table `django_content_type` */
 
@@ -183,7 +201,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `django_content_type` */
 
@@ -193,7 +211,9 @@ insert  into `django_content_type`(`id`,`app_label`,`model`) values
 (2,'auth','permission'),
 (4,'auth','user'),
 (5,'contenttypes','contenttype'),
-(7,'mascotas','mascota'),
+(9,'mascotas','mascota'),
+(7,'mascotas','persona'),
+(8,'mascotas','vacuna'),
 (6,'sessions','session');
 
 /*Table structure for table `django_migrations` */
@@ -211,25 +231,25 @@ CREATE TABLE `django_migrations` (
 /*Data for the table `django_migrations` */
 
 insert  into `django_migrations`(`id`,`app`,`name`,`applied`) values 
-(1,'contenttypes','0001_initial','2023-05-20 08:24:14.127290'),
-(2,'auth','0001_initial','2023-05-20 08:24:30.059543'),
-(3,'admin','0001_initial','2023-05-20 08:24:33.871455'),
-(4,'admin','0002_logentry_remove_auto_add','2023-05-20 08:24:34.029701'),
-(5,'admin','0003_logentry_add_action_flag_choices','2023-05-20 08:24:34.145653'),
-(6,'contenttypes','0002_remove_content_type_name','2023-05-20 08:24:37.228951'),
-(7,'auth','0002_alter_permission_name_max_length','2023-05-20 08:24:39.148920'),
-(8,'auth','0003_alter_user_email_max_length','2023-05-20 08:24:39.664864'),
-(9,'auth','0004_alter_user_username_opts','2023-05-20 08:24:39.790788'),
-(10,'auth','0005_alter_user_last_login_null','2023-05-20 08:24:40.614348'),
-(11,'auth','0006_require_contenttypes_0002','2023-05-20 08:24:40.679963'),
-(12,'auth','0007_alter_validators_add_error_messages','2023-05-20 08:24:40.780264'),
-(13,'auth','0008_alter_user_username_max_length','2023-05-20 08:24:40.975143'),
-(14,'auth','0009_alter_user_last_name_max_length','2023-05-20 08:24:41.196008'),
-(15,'auth','0010_alter_group_name_max_length','2023-05-20 08:24:41.384897'),
-(16,'auth','0011_update_proxy_permissions','2023-05-20 08:24:41.480637'),
-(17,'auth','0012_alter_user_first_name_max_length','2023-05-20 08:24:41.862403'),
-(18,'sessions','0001_initial','2023-05-20 08:24:42.673471'),
-(19,'mascotas','0001_initial','2023-05-20 08:29:30.703412');
+(1,'contenttypes','0001_initial','2023-05-20 17:58:36.679380'),
+(2,'auth','0001_initial','2023-05-20 17:58:50.878065'),
+(3,'admin','0001_initial','2023-05-20 17:58:54.867584'),
+(4,'admin','0002_logentry_remove_auto_add','2023-05-20 17:58:55.039924'),
+(5,'admin','0003_logentry_add_action_flag_choices','2023-05-20 17:58:55.246796'),
+(6,'contenttypes','0002_remove_content_type_name','2023-05-20 17:58:56.726131'),
+(7,'auth','0002_alter_permission_name_max_length','2023-05-20 17:58:58.044520'),
+(8,'auth','0003_alter_user_email_max_length','2023-05-20 17:58:58.459287'),
+(9,'auth','0004_alter_user_username_opts','2023-05-20 17:58:58.772580'),
+(10,'auth','0005_alter_user_last_login_null','2023-05-20 17:58:59.680862'),
+(11,'auth','0006_require_contenttypes_0002','2023-05-20 17:58:59.869472'),
+(12,'auth','0007_alter_validators_add_error_messages','2023-05-20 17:59:00.004557'),
+(13,'auth','0008_alter_user_username_max_length','2023-05-20 17:59:00.252402'),
+(14,'auth','0009_alter_user_last_name_max_length','2023-05-20 17:59:00.517324'),
+(15,'auth','0010_alter_group_name_max_length','2023-05-20 17:59:01.311499'),
+(16,'auth','0011_update_proxy_permissions','2023-05-20 17:59:01.475031'),
+(17,'auth','0012_alter_user_first_name_max_length','2023-05-20 17:59:03.034955'),
+(18,'sessions','0001_initial','2023-05-20 17:59:03.703543'),
+(19,'mascotas','0001_initial','2023-05-20 17:59:46.068725');
 
 /*Table structure for table `django_session` */
 
@@ -254,21 +274,101 @@ CREATE TABLE `mascotas_mascota` (
   `nombre` varchar(100) DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL,
-  `vacuna` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `persona_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `mascotas_mascota_persona_id_c7634f79_fk_mascotas_persona_id` (`persona_id`),
+  CONSTRAINT `mascotas_mascota_persona_id_c7634f79_fk_mascotas_persona_id` FOREIGN KEY (`persona_id`) REFERENCES `mascotas_persona` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `mascotas_mascota` */
 
-insert  into `mascotas_mascota`(`id`,`nombre`,`edad`,`foto`,`vacuna`) values 
-(1,'Dalia',1,'imagenes/1.jpg','Antirrabica'),
-(2,'Coco',3,'imagenes/2.jpg','Hepatitis'),
-(3,'Sultan',1,'imagenes/3.jpg','Parvovirus'),
-(4,'Cokis',1,'imagenes/4.jpg','Moquillo'),
-(5,'Tobi',2,'imagenes/5.jpg','Antibacterias'),
-(6,'Chestri',4,'imagenes/6.jpg','Hepatitis'),
-(7,'Teo',6,'imagenes/7.jpg','Moquillo'),
-(9,'Espartano',2,'imagenes/8.jpg','Moquillo');
+insert  into `mascotas_mascota`(`id`,`nombre`,`edad`,`foto`,`persona_id`) values 
+(5,'Dalia',1,'imagenes/1.jpg',1),
+(6,'Coco',2,'imagenes/2.jpg',2),
+(7,'Espartano',3,'imagenes/3.jpg',3),
+(8,'Firulais',4,'imagenes/4.jpg',3),
+(9,'Orejas',5,'imagenes/5.jpg',2),
+(10,'Chestri',6,'imagenes/6.jpg',1),
+(11,'Cokis',7,'imagenes/7.jpg',1),
+(12,'Zeus',8,'imagenes/8.jpg',1);
+
+/*Table structure for table `mascotas_mascota_vacuna` */
+
+DROP TABLE IF EXISTS `mascotas_mascota_vacuna`;
+
+CREATE TABLE `mascotas_mascota_vacuna` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mascota_id` int(11) NOT NULL,
+  `vacuna_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mascotas_mascota_vacuna_mascota_id_vacuna_id_e4a8989d_uniq` (`mascota_id`,`vacuna_id`),
+  KEY `mascotas_mascota_vacuna_vacuna_id_c4ee45ea_fk_mascotas_vacuna_id` (`vacuna_id`),
+  CONSTRAINT `mascotas_mascota_vac_mascota_id_37f2154c_fk_mascotas_` FOREIGN KEY (`mascota_id`) REFERENCES `mascotas_mascota` (`id`),
+  CONSTRAINT `mascotas_mascota_vacuna_vacuna_id_c4ee45ea_fk_mascotas_vacuna_id` FOREIGN KEY (`vacuna_id`) REFERENCES `mascotas_vacuna` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `mascotas_mascota_vacuna` */
+
+insert  into `mascotas_mascota_vacuna`(`id`,`mascota_id`,`vacuna_id`) values 
+(1,5,1),
+(2,5,2),
+(3,6,1),
+(4,6,3),
+(5,7,1),
+(6,7,4),
+(7,8,3),
+(8,8,4),
+(9,9,1),
+(10,9,2),
+(11,9,4),
+(12,10,1),
+(13,10,2),
+(14,10,3),
+(15,11,1),
+(16,11,2),
+(17,11,3),
+(18,11,4),
+(19,12,4);
+
+/*Table structure for table `mascotas_persona` */
+
+DROP TABLE IF EXISTS `mascotas_persona`;
+
+CREATE TABLE `mascotas_persona` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `edad` int(11) NOT NULL,
+  `telefono` varchar(12) NOT NULL,
+  `correo` varchar(254) NOT NULL,
+  `direccion` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `mascotas_persona` */
+
+insert  into `mascotas_persona`(`id`,`nombre`,`apellidos`,`edad`,`telefono`,`correo`,`direccion`) values 
+(1,'Yobani','Chicunque',24,'3166769442','yobanichicunque@gmail.com','Barrio Jose Homero'),
+(2,'Sandra','Herrera',26,'3172470955','sapatrich@gmail.com','Barrio Los Sauces'),
+(3,'Mirian','Jajoy',40,'3217720626','mirianjajoy@gmail.com','Barrio Comercial');
+
+/*Table structure for table `mascotas_vacuna` */
+
+DROP TABLE IF EXISTS `mascotas_vacuna`;
+
+CREATE TABLE `mascotas_vacuna` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `mascotas_vacuna` */
+
+insert  into `mascotas_vacuna`(`id`,`nombre`) values 
+(1,'Antirrabica'),
+(2,'Hepatitis'),
+(3,'Parvovirus'),
+(4,'Moquillo');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

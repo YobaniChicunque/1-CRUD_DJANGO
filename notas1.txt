@@ -115,6 +115,10 @@ en sistema>settings.py
 21 Hacer modelos y relaciones 
 en mascotas>models.py
 
+#Ejemplo de relacion: de uno a muchos y de muchos a muchos
+persona = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+vacuna = models.ManyToManyField(Vacuna, blank=True)
+
 22 Hacer las migraciones de los modelos(terminal):
 
 py manage.py makemigrations
@@ -137,6 +141,15 @@ admin.site.register(Mascota)
 Nota: con esto puedo hacer pruebas desde el user(admin) para saber si se estan guardando mis registros
 en mi tablas de la base de datos, sin antes haber creado un formulario de registro
 en html.
+
+
+25 Hacer Querysets(consultas) de nuestra base de datos desde el Shell Django(terminal)
+
+py manage.py shell
+
+26 importar los modelos de la aplicacion, para poder hacer consultas(terminal)
+
+import mascotas.models import Mascota
 
 26 Crear una carpeta llamda templates en mascotas>
 

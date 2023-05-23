@@ -15,7 +15,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Edad</th>
                         <th scope="col">Foto</th>
-                        <th scope="col">Vacuna</th>
+                        <th scope="col">Dueño de la mascota</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -29,7 +29,7 @@
                             <img src="{{ mascota.foto.url }}" class="img-fluid" alt="image desc"
                                 style="width: 100px; height: 100px" />
                         </td>
-                        <td>{{ mascota.vacuna }}</td>
+                        <td>{{ mascota.persona }}</td>
                         <td>
                             <a name="" id="" class="btn btn-info" href="{% url 'editar' mascota.id %}"
                                 role="button">Editar</a>
