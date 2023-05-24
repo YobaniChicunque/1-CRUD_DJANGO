@@ -109,7 +109,7 @@ password:123
 
 py manage.py startapp mascotas
 
-25 A�adir la aplicacion en la configuracion del proyecto
+25 Añadir la aplicacion en la configuracion del proyecto
 en sistema>settings.py
 
 21 Hacer modelos y relaciones 
@@ -143,24 +143,78 @@ en mi tablas de la base de datos, sin antes haber creado un formulario de regist
 en html.
 
 
-25 Hacer Querysets(consultas) de nuestra base de datos desde el Shell Django(terminal)
+25 Abrir shell Django y Hacer Querysets(consultas) de la base de datos
 
 py manage.py shell
 
-26 importar los modelos de la aplicacion, para poder hacer consultas(terminal)
+26 importar los modelos de la aplicacion, para poder hacer consultas(Querysets)
+(shell Django)
 
-import mascotas.models import Mascota
+import mascotas.models import Persona, Vacuna, Mascota
 
-26 Crear una carpeta llamda templates en mascotas>
+27 hacer consultas(Querysets) en la shell Django
+Mascota.objects.all()
 
-27 Crear index.html en mascotas>templates
+28 insertar registros en la sehll Django
+Mascota.objects.create(nombre="Dalia",
+edad=2,
+foto="imagenes/1.jpg",
+persona_id=1
+)
 
-28 crear una vista en mascotas>views.py
+-------------parte 2-----------------------------
 
-29 Crear una ruta en mascotas>urls.py
 
-25 Imprimir todos los regiatros de uno o varios modelos
-en una tabla html
+1 crear primer templates en mascotas>templates>paginas
+
+ inicio.html
+
+2 crear primera vista en mascotas>view.py
+
+def inicio(request):
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import Mascota
+from .forms import MascotaForm
+
+return render(request, 'paginas/inicio.html')
+
+3 crear primera url mascotas>urls.py
+
+from django.urls import path
+from . import views
+from django.conf import settings
+from django.contrib.staticfiles.urls import static
+
+urlpatterns = [
+    path('', views.inicio, name="inicio"),
+]
+
+4 Añadir url de la aplicacion a las url del sistema
+en sistema>urls
+
+from django.contrib import admin
+from django.urls import path
+from django.urls import include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('mascotas.urls')),
+]
+
+5 Crear un template base que haga herencia de templates 
+en mascotas>templates
+
+base.html
+
+6 mostrar todos los registros de una tabla 
+en un template. Es decir crear un template,
+una vista y una url
+
+
+
+
 
 
 
