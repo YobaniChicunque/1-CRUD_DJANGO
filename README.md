@@ -1,6 +1,6 @@
 # 1-CRUD_DJANGO
 
-Correr el servidor
+Correr el proyecto
 
 >py -m venv env
 >
@@ -9,14 +9,6 @@ Correr el servidor
 >pip install -r requirements.txt
 >
 >py manage.py runserver
-
-Detener el servidor
-
->Control+c
-
-Desactivar el entorno virutal
-
->deactivate
 
 
 
